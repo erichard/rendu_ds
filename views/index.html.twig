@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+
+        <style>
+            .label-sm {
+              font-size: 12px;
+            }
+
+            .label-md {
+              font-size: 16px;
+            }
+
+            .label-lg {
+              font-size: 20px;
+            }
+            .no-border td {
+                border: none  !important;
+            }
+            td.icon {
+                vertical-align: middle !important;
+            }
+            .text-justify {
+                hyphens: auto;
+            }
+            @media print {
+              .label {
+                border: none;
+              }
+              .label-success {
+                background-color: #5cb85c !important;
+              }
+              .label i:before {
+                color: #FFF !important;
+              }
+              .label-warning {
+                background-color: #f0ad4e !important;
+              }
+              .label-danger {
+                background-color: #d9534f !important;
+              }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <form action="/generate" method="POST" data-persist="garlic">
+                <h1 class="text-center">
+                    <input type="text" name="title" placeholder="Titre du devoir">
+                </h1>
+
+                <section>
+                    <h2>Copie</h2>
+                    <table class="table no-border">
+                        <tr>
+                            <td class="icon col-xs-2 text-center">
+                              <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
+                            </td>
+                            <td class="text-justify">
+                                <textarea class="form-control" name="copie[positif]" placeholder="Commentaires positifs"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="icon col-xs-1 text-center">
+                              <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
+                            </td>
+                            <td class="text-justify">
+                                <textarea  class="form-control" name="copie[amelioration]" placeholder="Commentaires d'amélioration"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Compétences</h2>
+                    <table class="table">
+                    <tr>
+                        <th>Compétence</th>
+                        <th class="text-center">Acquis</th>
+                        <th class="text-center">En cours d'acquisition</th>
+                        <th class="text-center">Non acquis</th>
+                    </tr>
+                    <tbody id="skillTable" >
+                    <tr id="firstSkill">
+                        <th>
+                            <select name="skill[0][name]" class="form-control">
+                                <optgroup label="Se repérer dans le temps et construire des repères historiques de la 6ème à la 4ème">
+                                    <option value="CO1">CO1 - Mémoriser pour nommer les repères  historiques et les grandes périodes historiques</option>
+                                    <option value="CO2">CO2 - Mémoriser pour nommer et dater des grands repères historiques</option>
+                                    <option value="CO3">CO3 - nommer, dater et expliquer  des grands repères historiques</option>
+                                    <option value="CO4">CO4 - Situer un événement dans une époque ou une période donnée</option>
+                                </optgroup>
+                                <optgroup label="Se repérer dans l'espace  et construire des repères géographiques de la 6ème à la 3ème">
+                                    <option value="CO6">CO6 - nommer  les grands repères terrestres et de population</option>
+                                    <option value="CO7">CO7 - nommer et localiser les grands repères de population</option>
+                                    <option value="CO8">CO8 - les nommer, les localiser , les situer les uns par rapport aux autres</option>
+                                    <option value="CO9">CO9 - les situer à différentes échelles</option>
+                                </optgroup>
+                                <optgroup label="Analyser et comprendre un document">
+                                    <option value="CO10">CO10 - comprendre le sens général d'un ou de plusieurs documents</option>
+                                    <option value="CO11">CO11 - replacer le ou les documents dans son contexte en identifiant les éléments pour le présenter et/ou identifier son point de vue</option>
+                                    <option value="CO12">CO12 - prélever des informations pertinentes pour répondre à une ou des questions posées et/ou les classer</option>
+                                    <option value="CO13">CO13 - expliquer le ou les documents et/ou  les croiser,  à l'aide de ses connaissances</option>
+                                </optgroup>
+                                <optgroup label="Pratiquer différents langages">
+                                    <option value="CO18">CO18 - s'exprimer dans un langage précis avec un lexique historique et géographique approprié,</option>
+                                    <option value="CO19">CO19 - présenter l'exposé avec un support (affiche, diaporama ,,,)</option>
+                                    <option value="CO20">CO20 - échanger, argumenter lors d'un débat,</option>
+                                </optgroup>
+                                <optgroup label="Raisoner justifier une démarche et des choix effectués">
+                                    <option value="CO21">CO21 - se poser des questions sur une situation problème</option>
+                                    <option value="CO22">CO22 - formuler des hypothèses</option>
+                                    <option value="CO23">CO23 - chercher des preuves pour vérifier les hypothèses</option>
+                                    <option value="CO24">CO24 - répondre à la question sur la situation problème de départ.</option>
+                                </optgroup>
+                                <optgroup label="Coopérer/mutualiser le travail en équipe">
+                                    <option value="CO30">CO30 - découvrir et comprendre la consigne donnée</option>
+                                    <option value="CO31">CO31 - Discuter/argumenter pour défendre ses choix</option>
+                                    <option value="CO32">CO32 - négocier une solution commune</option>
+                                    <option value="CO33">CO33 - élaborer une tâche commune mais partagée</option>
+                                </optgroup>
+                            </select>
+                        </th>
+                        <td class="text-center"><input type="radio" name="skill[0][state]" value="1"></td>
+                        <td class="text-center"><input type="radio" name="skill[0][state]" value="2"></td>
+                        <td class="text-center"><input type="radio" name="skill[0][state]" value="3"></td>
+                    </tr>
+                    </tbody>
+                    <tr>
+                        <td colspan="4"><button id="addSkill" type="button" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Ajouter une compétence</button></td>
+                    </tr>
+                    </table>
+                </section>
+
+
+                <section>
+                    <h2>Attitude en classe</h2>
+                    <table class="table no-border">
+                        <tr>
+                            <td class="icon col-xs-2 text-center">
+                              <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
+                            </td>
+                            <td class="text-justify">
+                                <textarea  class="form-control" name="attitude[positif]" placeholder="Commentaires positifs"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="icon col-xs-1 text-center">
+                              <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
+                            </td>
+                            <td class="text-justify">
+                                <textarea  class="form-control" name="attitude[amelioration]" placeholder="Commentaires d'amélioration"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section>
+                    <h2>Paramètres</h2>
+
+                    <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="alert[cours]"> Alerte cours
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="alert[comportement]"> Alerte comportement
+                      </label>
+                    </div>
+
+                </section>
+
+                <button class="btn btn-primary pull-right">Terminer</button>
+            </form>
+        </div>
+
+        <script src="bower_components/jquery/dist/jquery.slim.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/garlicjs/dist/garlic.min.js"></script>
+        <script>
+            function cloneRow() {
+              var row = document.getElementById("firstSkill"); // find row to copy
+              var table = document.getElementById("skillTable"); // find table to append to
+              var clone = row.cloneNode(true); // copy children too
+              table.appendChild(clone); // add new row to end of table
+            }
+
+            $('#addSkill').on("click", function() {
+                cloneRow();
+            });
+        </script>
+    </body>
+</html>

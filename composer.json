@@ -1,0 +1,9 @@
+{
+    "name": "erwan/rendu-ds",
+    "type": "project",
+    "require": {
+        "silex/silex": "^2.0",
+        "twig/twig": "^1.25"
+    },
+    "license": "MIT"
+}

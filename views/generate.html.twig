@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+        <style>
+            .label-sm {
+              font-size: 12px;
+            }
+
+            .label-md {
+              font-size: 16px;
+            }
+
+            .label-lg {
+              font-size: 20px;
+            }
+            .no-border td {
+                border: none  !important;
+            }
+            td.icon {
+                vertical-align: middle !important;
+            }
+            .text-justify {
+                hyphens: auto;
+            }
+            @media print {
+              .label {
+                border: none;
+              }
+              .label-success {
+                background-color: #5cb85c !important;
+              }
+              .alert-danger {
+                background-color: #f2dede !important;
+                color: #a94442 !important;
+                border-color: #ebccd1 !important;
+              }
+              .alert-danger strong, .alert-danger i:before {
+                color: #a94442 !important;
+              }
+              .label i:before {
+                color: #FFF !important;
+              }
+              .label-warning {
+                background-color: #f0ad4e !important;
+              }
+              .label-danger {
+                background-color: #d9534f !important;
+              }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1 class="text-center">{{ data.title }}</h1>
+
+            {% if data.alert.cours|default(false) %}
+                <div class="alert alert-danger"><i class="fa fa-warning fa-3x"></i>
+                    <strong>Alerte cours !</strong>
+                    qsdmfkqnksldfkfnqsldn
+                    qsmdkfknqsdfn
+                    qmskdnffqkjsdnf
+                </div>
+            {% endif %}
+
+
+            {% if data.alert.comportement|default(false) %}
+                <div class="alert alert-danger"><i class="fa fa-warning fa-3x"></i>
+                    <strong>Alerte comportement !</strong>
+                </div>
+            {% endif %}
+            {% if data.copie.positif is not empty or data.copie.amelioration is not empty %}
+            <section>
+                <h2>Copie</h2>
+                <table class="table no-border">
+                    {% if data.copie.positif is not empty %}
+                    <tr>
+                        <td class="icon col-xs-2 text-center">
+                          <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
+                        </td>
+                        <td class="text-justify">{{ data.copie.positif|nl2br }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if data.copie.amelioration is not empty %}
+                    <tr>
+                        <td class="icon col-xs-1 text-center">
+                          <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
+                        </td>
+                        <td class="text-justify">{{ data.copie.amelioration|nl2br }}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+            {#
+            <section>
+                <h2>Compétences</h2>
+                <table class=table>
+                <tr>
+                    <th>Compétence</th>
+                    <th class="text-center">Acquis</th>
+                    <th class="text-center">En cours d'acquisition</th>
+                    <th class="text-center">Non acquis</th>
+                </tr>
+                <tr>
+                    <th>CO1</th>
+                    <td class="text-center"><span class="label label-lg label-success"><i class="fa fa-check"></i></span></td>
+                    <td class="text-center"><span class="label label-lg label-warning"><i class="fa fa-refresh"></i></span></td>
+                    <td class="text-center"><span class="label label-lg label-danger"><i class="fa fa-close"></i></span></td>
+                </tr>
+                </table>
+            </section>
+            #}
+
+
+            {% if data.attitude.positif is not empty or data.attitude.amelioration is not empty %}
+            <section>
+                <h2>Attitude en classe</h2>
+                <table class="table no-border">
+                    {% if data.attitude.positif is not empty %}
+                    <tr>
+                        <td class="icon col-xs-2 text-center">
+                          <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
+                        </td>
+                        <td class="text-justify">{{ data.attitude.positif|nl2br }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if data.attitude.amelioration is not empty %}
+                    <tr>
+                        <td class="icon col-xs-1 text-center">
+                          <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
+                        </td>
+                        <td class="text-justify">{{ data.attitude.amelioration|nl2br }}</td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </section>
+            {% endif %}
+
+            <section>
+                <div class="pull-right" style="border: 1px solid gray; border-radius: 5px; padding: 5px 15px; margin-top:100px; height: 150px;">
+                    <h5>Signature Parent/Reponsable légal</h5>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
