@@ -62,20 +62,17 @@
             <h1 class="text-center">{{ data.title }}</h1>
 
             {% if data.alert.cours|default(false) %}
-                <div class="alert alert-danger"><i class="fa fa-warning fa-3x"></i>
-                    <strong>Alerte cours !</strong>
-                    qsdmfkqnksldfkfnqsldn
-                    qsmdkfknqsdfn
-                    qmskdnffqkjsdnf
+                <div class="alert alert-danger"><i class="fa fa-warning fa-2x"></i>
+                    <strong>Alerte cours !</strong> Tu dois apprendre le cours. C'est à dire lire plusieur fois les bilans, les activités faites et le manuel. Te poser des questions et imaginer ce qu'il y aura à l'évaluation.
                 </div>
             {% endif %}
-
 
             {% if data.alert.comportement|default(false) %}
-                <div class="alert alert-danger"><i class="fa fa-warning fa-3x"></i>
-                    <strong>Alerte comportement !</strong>
+                <div class="alert alert-danger"><i class="fa fa-warning fa-2x"></i>
+                    <strong>Alerte comportement !</strong> Ton comportement gène la classe et empêche son fonctionnement normal.
                 </div>
             {% endif %}
+
             {% if data.copie.positif is not empty or data.copie.amelioration is not empty %}
             <section>
                 <h2>Copie</h2>
@@ -146,10 +143,16 @@
             {% endif %}
 
             <section>
-                <div class="pull-right" style="border: 1px solid gray; border-radius: 5px; padding: 5px 15px; margin-top:100px; height: 150px;">
-                    <h5>Signature Parent/Reponsable légal</h5>
+                <div class="pull-right" style="border: 1px solid gray; border-radius: 5px; padding: 5px 15px; margin-top:100px; margin-bottom:15px; height: 150px;">
+                    <h5 class="text-muted">Signature Parent/Reponsable légal</h5>
                 </div>
+                <div class="clearfix"></div>
             </section>
+
+            <div class="alert alert-info hidden-print">
+                <i class="fa fa-lightbulb-o fa-2x"></i> <strong>Astuce</strong>
+                Utilisez la fonction "Imprimer dans un fichier" de votre navigateur pour obtenir un fichier PDF. Ce message ne sera pas affiché dans le PDF.
+            </div>
         </div>
     </body>
 </html>
