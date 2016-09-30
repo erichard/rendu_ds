@@ -28,6 +28,7 @@ $app->post('/generate', function (Request $request) use ($app) {
     $snappy = new Pdf(__DIR__.'/vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64');
 
     $filename = $data['title'].' - '.$data['student'].'.pdf';
+
     $response = new Response($snappy->getOutputFromHtml($html), 200, [
         'Content-Type' => 'application/pdf',
         'Content-Disposition' => 'attachment; filename="'.$filename.'"',
