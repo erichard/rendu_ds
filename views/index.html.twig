@@ -11,7 +11,10 @@
               font-family: 'Material Icons';
               font-style: normal;
               font-weight: 400;
-              src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+              src: local('Material Icons'),
+                local('MaterialIcons-Regular'),
+                url(fonts/MaterialIcons-Regular.woff2)
+                format('woff2');
             }
 
             .material-icons {
@@ -42,19 +45,18 @@
                 <section class="row">
                     <div class="col s12 m6">
                         <div class="input-field">
-                            <input id="title" type="text" name="title" class="autocomplete" autocomplete="off" class="validate" required>
                             <label for="title">Titre du devoir</label>
+                            <input id="title" type="text" name="title" class="autocomplete" autocomplete="off" class="validate" required>
                         </div>
-
                     </div>
                     <div class="col s12 m6">
                         <div class="input-field">
-                            <input type="text" id="student" name="student" class="autocomplete" autocomplete="off" class="validate" required>
                             <label for="student">Elève</label>
+                            <input type="text" id="student" name="student" class="autocomplete" autocomplete="off" class="validate" required>
                         </div>
                         <div class="input-field">
-                            <input id="note" type="number" min="0" max="20" step="0.5" name="note" autocomplete="off" class="validate" required>
                             <label for="note">Note sur 20</label>
+                            <input id="note" type="number" min="0" max="20" step="0.5" name="note" autocomplete="off" class="validate" required>
                         </div>
                         <p>
                           <input type="checkbox" name="alert[cours]" id="alert_cours" />
@@ -62,7 +64,7 @@
                         </p>
                         <p>
                           <input type="checkbox" name="alert[comportement]" id="alert_comportement" />
-                          <label for="alert_comportement">Alerte alert_comportement</label>
+                          <label for="alert_comportement">Alerte comportement</label>
                         </p>
                     </div>
                 </section>
@@ -71,14 +73,14 @@
                     <div class="row">
                         <div class="col m6">
                             <div class="input-field">
-                                <textarea id="copie_positif" class="materialize-textarea" name="copie[positif]"></textarea>
                                 <label for="copie_positif">Points positifs</label>
+                                <textarea id="copie_positif" class="materialize-textarea" name="copie[positif]"></textarea>
                             </div>
                         </div>
                         <div class="col m6">
                             <div class="input-field">
-                                <textarea id="copie_amelioration" class="materialize-textarea" name="copie[amelioration]"></textarea>
                                 <label for="copie_amelioration">Points à améliorer</label>
+                                <textarea id="copie_amelioration" class="materialize-textarea" name="copie[amelioration]"></textarea>
                             </div>
                         </div>
                     </div>
@@ -88,14 +90,14 @@
                     <div class="row">
                         <div class="col m6">
                             <div class="input-field">
-                                <textarea id="attitude_positif" class="materialize-textarea" name="attitude[positif]"></textarea>
                                 <label for="attitude_positif">Points positifs</label>
+                                <textarea id="attitude_positif" class="materialize-textarea" name="attitude[positif]"></textarea>
                             </div>
                         </div>
                         <div class="col m6">
                             <div class="input-field">
-                                <textarea id="attitude_amelioration" class="materialize-textarea" name="attitude[amelioration]"></textarea>
                                 <label for="attitude_amelioration">Points à améliorer</label>
+                                <textarea id="attitude_amelioration" class="materialize-textarea" name="attitude[amelioration]"></textarea>
                             </div>
                         </div>
                     </div>
