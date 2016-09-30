@@ -17,6 +17,9 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.6.3",
-    "garlicjs": "^1.2.4"
+    "garlicjs": "^1.2.4",
+    "materialize": "^0.97.7",
+    "material-icons": "^0.1.0",
+    "store-js": "^1.3.20"
   }
 }

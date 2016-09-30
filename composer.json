@@ -3,7 +3,9 @@
     "type": "project",
     "require": {
         "silex/silex": "^2.0",
-        "twig/twig": "^1.25"
+        "twig/twig": "^1.25",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "knplabs/knp-snappy": "^0.4.3"
     },
     "license": "MIT"
 }

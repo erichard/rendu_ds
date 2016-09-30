@@ -2,79 +2,104 @@
 <html lang="fr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        {# <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> #}
+        <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
 
         <style>
-            .label-sm {
-              font-size: 12px;
+            /* fallback */
+            @font-face {
+              font-family: 'Material Icons';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
             }
 
-            .label-md {
-              font-size: 16px;
-            }
-
-            .label-lg {
-              font-size: 20px;
-            }
-            .no-border td {
-                border: none  !important;
-            }
-            td.icon {
-                vertical-align: middle !important;
-            }
-            .text-justify {
-                hyphens: auto;
-            }
-            @media print {
-              .label {
-                border: none;
-              }
-              .label-success {
-                background-color: #5cb85c !important;
-              }
-              .label i:before {
-                color: #FFF !important;
-              }
-              .label-warning {
-                background-color: #f0ad4e !important;
-              }
-              .label-danger {
-                background-color: #d9534f !important;
-              }
+            .material-icons {
+              font-family: 'Material Icons';
+              font-weight: normal;
+              font-style: normal;
+              font-size: 24px;
+              line-height: 1;
+              letter-spacing: normal;
+              text-transform: none;
+              display: inline-block;
+              white-space: nowrap;
+              word-wrap: normal;
+              direction: ltr;
+              -webkit-font-feature-settings: 'liga';
+              -webkit-font-smoothing: antialiased;
             }
         </style>
+
+
+        <link rel="stylesheet" href="bower_components/material-icons/css/material-icons.min.css">
     </head>
 
     <body>
         <div class="container">
-            <form action="/generate" method="POST" data-persist="garlic">
-                <h1 class="text-center">
-                    <input type="text" name="title" placeholder="Titre du devoir">
-                </h1>
+            <h1 class="center-align">Rendu devoir</h1>
+            <form id="rendu_ds" action="/generate" method="POST" data-persist="garlic">
+                <section class="row">
+                    <div class="col s12 m6">
+                        <div class="input-field">
+                            <input id="title" type="text" name="title" class="autocomplete" autocomplete="off" class="validate" required>
+                            <label for="title">Titre du devoir</label>
+                        </div>
 
-                <section>
-                    <h2>Copie</h2>
-                    <table class="table no-border">
-                        <tr>
-                            <td class="icon col-xs-2 text-center">
-                              <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
-                            </td>
-                            <td class="text-justify">
-                                <textarea class="form-control" name="copie[positif]" placeholder="Commentaires positifs"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="icon col-xs-1 text-center">
-                              <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
-                            </td>
-                            <td class="text-justify">
-                                <textarea  class="form-control" name="copie[amelioration]" placeholder="Commentaires d'amélioration"></textarea>
-                            </td>
-                        </tr>
-                    </table>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="input-field">
+                            <input type="text" id="student" name="student" class="autocomplete" autocomplete="off" class="validate" required>
+                            <label for="student">Elève</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="note" type="number" min="0" max="20" step="0.5" name="note" autocomplete="off" class="validate" required>
+                            <label for="note">Note sur 20</label>
+                        </div>
+                        <p>
+                          <input type="checkbox" name="alert[cours]" id="alert_cours" />
+                          <label for="alert_cours">Alerte cours</label>
+                        </p>
+                        <p>
+                          <input type="checkbox" name="alert[comportement]" id="alert_comportement" />
+                          <label for="alert_comportement">Alerte alert_comportement</label>
+                        </p>
+                    </div>
                 </section>
-
+                <section>
+                    <h4>Copie</h4>
+                    <div class="row">
+                        <div class="col m6">
+                            <div class="input-field">
+                                <textarea id="copie_positif" class="materialize-textarea" name="copie[positif]"></textarea>
+                                <label for="copie_positif">Points positifs</label>
+                            </div>
+                        </div>
+                        <div class="col m6">
+                            <div class="input-field">
+                                <textarea id="copie_amelioration" class="materialize-textarea" name="copie[amelioration]"></textarea>
+                                <label for="copie_amelioration">Points à améliorer</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h4>Attitude en classe</h4>
+                    <div class="row">
+                        <div class="col m6">
+                            <div class="input-field">
+                                <textarea id="attitude_positif" class="materialize-textarea" name="attitude[positif]"></textarea>
+                                <label for="attitude_positif">Points positifs</label>
+                            </div>
+                        </div>
+                        <div class="col m6">
+                            <div class="input-field">
+                                <textarea id="attitude_amelioration" class="materialize-textarea" name="attitude[amelioration]"></textarea>
+                                <label for="attitude_amelioration">Points à améliorer</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 {#
                 <section>
                     <h2>Compétences</h2>
@@ -88,7 +113,7 @@
                     <tbody id="skillTable" >
                     <tr id="firstSkill">
                         <th>
-                            <select name="skill[0][name]" class="form-control">
+                            <select name="skill[0][name]" >
                                 <optgroup label="Se repérer dans le temps et construire des repères historiques de la 6ème à la 4ème">
                                     <option value="CO1">CO1 - Mémoriser pour nommer les repères  historiques et les grandes périodes historiques</option>
                                     <option value="CO2">CO2 - Mémoriser pour nommer et dater des grands repères historiques</option>
@@ -138,63 +163,39 @@
                 </section>
                 #}
 
+               <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                    <button type="submit" class="btn-floating btn-large red">
+                      <i class="large material-icons">file_download</i>
+                    </button>
+               </div>
 
-                <section>
-                    <h2>Attitude en classe</h2>
-                    <table class="table no-border">
-                        <tr>
-                            <td class="icon col-xs-2 text-center">
-                              <span class="label label-success label-lg"><i class="fa fa-plus-circle"></i></span>
-                            </td>
-                            <td class="text-justify">
-                                <textarea  class="form-control" name="attitude[positif]" placeholder="Commentaires positifs"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="icon col-xs-1 text-center">
-                              <span class="label label-warning label-lg"><i class="fa fa-dot-circle-o"></i></span>
-                            </td>
-                            <td class="text-justify">
-                                <textarea  class="form-control" name="attitude[amelioration]" placeholder="Commentaires d'amélioration"></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                </section>
-
-                <section>
-                    <h2>Paramètres</h2>
-
-                    <div class="checkbox">
-                        <label>
-                          <input type="checkbox" name="alert[cours]"> Alerte cours
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" name="alert[comportement]"> Alerte comportement
-                      </label>
-                    </div>
-
-                </section>
-
-                <button class="btn btn-primary pull-right">Terminer</button>
             </form>
         </div>
 
-        <script src="bower_components/jquery/dist/jquery.slim.min.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/garlicjs/dist/garlic.min.js"></script>
+        {# <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> #}
+        <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+        <script src="bower_components/store-js/store.min.js"></script>
+
         <script>
+            {#
             function cloneRow() {
               var row = document.getElementById("firstSkill"); // find row to copy
               var table = document.getElementById("skillTable"); // find table to append to
               var clone = row.cloneNode(true); // copy children too
+
               table.appendChild(clone); // add new row to end of table
             }
-
             $('#addSkill').on("click", function() {
                 cloneRow();
             });
+            #}
+
+            $(document).ready(function() {
+                Materialize.updateTextFields();
+                $('select').material_select();
+            })
         </script>
     </body>
 </html>
