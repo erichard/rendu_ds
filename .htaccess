@@ -1,0 +1,10 @@
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Automatically use app_dev.php on sandbox and docker
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !index.php
+    RewriteRule ^(.*)$ /index.php [QSA,L]
+</IfModule>
