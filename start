@@ -1,4 +1,6 @@
 #!/bin/sh
 
-php -S localhost:8000 &
-php -S localhost:8001 &
+docker-compose pull
+docker-compose up -d --force-recreate
+
+echo "Rendu DS dispo sur http://choupi.ds:8000/"
